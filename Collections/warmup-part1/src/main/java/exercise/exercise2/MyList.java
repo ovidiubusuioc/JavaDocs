@@ -1,6 +1,7 @@
 package exercise.exercise2;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by Radu.Hoaghe on 20.04.2015.
@@ -39,10 +40,27 @@ public class MyList<Integer> extends ArrayList<Integer> {
 
     // A counter to hold the number of adds that were made on the list
     private int differentElements;
+    private java.lang.Integer integer;
 
     public MyList(){
         differentElements = 0;
     }
+
+
+//    @Override
+//    public boolean add(java.lang.Integer integer) {
+//         return super.add(integer);
+//    }
+//
+//    @Override
+//    public boolean addAll(Collection<? extends java.lang.Integer> c) {
+//        return super.addAll(c);
+//    }
+//
+//    @Override
+//    public java.lang.Integer remove(int index) {
+//        return super.remove(index);
+//    }
 
     // TODO Exercise #2 a) Override add() and addAll() methods so that the list should retain the number of
     // TODO Exercise #2 a) different elements (Hint: check out the methods signatures on the List documentation)

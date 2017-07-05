@@ -2,6 +2,7 @@ package exercise.exercise1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by Radu.Hoaghe on 4/20/2015.
@@ -18,6 +19,7 @@ import java.util.List;
 public class Exercise1{
 
     // The list that contains some Integer values
+
     private List<Integer> givenList;
 
     public Exercise1(List<Integer> l) {
@@ -29,7 +31,18 @@ public class Exercise1{
 
         // This List is used only for testing so you don't have to modify it
         List<Integer> testValues = new ArrayList<Integer>();
-
+        int sum=0, min=1000, max=0;
+        ListIterator<Integer> iterator1 = givenList.listIterator();
+        while(iterator1.hasNext()){
+            int clone = iterator1.next().intValue();
+            sum += clone;
+            if(clone<min ) {
+                min = clone;
+            }
+            if(clone>max) {
+                max = clone;
+            }
+        }
 
         // TODO Exercise #1 a1) In order to pass the tests, you need to name your variables sum, min and max or if
         // TODO Exercise #1 a1) you want to name them differently you need to modify them when you add them to testValues
@@ -37,12 +50,12 @@ public class Exercise1{
 
 
         // TODO Exercise #1 a2) Uncomment the following three lines in order to check your computed values using tests
-//        testValues.add(sum);
-//        testValues.add(min);
-//        testValues.add(max);
+        testValues.add(sum);
+        testValues.add(min);
+        testValues.add(max);
 
         return testValues;
-    }
+}
 
     // TODO Exercise #1 b) Compute the sum and get the min and the max from the even (RO: pare) positions in the list,
     // TODO Exercise #1 b) iterating through it using classic for loop
@@ -50,7 +63,17 @@ public class Exercise1{
 
         // This List is used only for testing so you don't need to modify it
         List<Integer> testValues = new ArrayList<Integer>();
-
+        int sum=0, min=1000, max=0;
+        for(int i=0;i<givenList.size();i++){
+            if(i%2==0) {
+                int clone = givenList.get(i);
+                sum += clone;
+                if (clone < min)
+                    min = clone;
+                if (clone > max)
+                    max = clone;
+            }
+        }
 
         // TODO Exercise #1 b1) In order to pass the tests, you need to name your variables sum, min and max or if
         // TODO Exercise #1 b1) you want to name them differently you need to modify them when you add them to testValues
@@ -58,9 +81,9 @@ public class Exercise1{
 
 
         // TODO Exercise #1 b2) Uncomment the following three lines in order to check your computed values using tests
-//        testValues.add(sum);
-//        testValues.add(min);
-//        testValues.add(max);
+        testValues.add(sum);
+        testValues.add(min);
+        testValues.add(max);
 
         return testValues;
     }
@@ -71,6 +94,16 @@ public class Exercise1{
 
         // This List is used only for testing so you don't need to modify it
         List<Integer> testValues = new ArrayList<Integer>();
+        int sum=0, min=1000, max=0;
+        for(Integer j : givenList) {
+            if (j % 2 == 1) {
+                sum += j;
+                if (j < min)
+                    min = j;
+                if (j > max)
+                    max = j;
+            }
+        }
 
 
         // TODO Exercise #1 c1) In order to pass the tests, you need to name your variables sum, min and max or if
@@ -79,9 +112,9 @@ public class Exercise1{
 
 
         // TODO Exercise #1 c2) Uncomment the following three lines in order to check your computed values using tests
-//        testValues.add(sum);
-//        testValues.add(min);
-//        testValues.add(max);
+        testValues.add(sum);
+        testValues.add(min);
+        testValues.add(max);
 
         return testValues;
     }

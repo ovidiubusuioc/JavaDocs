@@ -58,28 +58,118 @@ public class MyImplementedList<E> {
     //TODO a) implement the empty constructor for the your data structure
     public MyImplementedList() {
         //TODO a) HINT - DEFAULT_CAPACITY, capacityAfterExtending and elementData properties
+        this.capacityAfterExtending=DEFAULT_CAPACITY;
+        this.size=0;
+        this.elementData= new Object[DEFAULT_CAPACITY];
     }
 
     //TODO b) create the int size() method that returns the size of the data structure
-
+    public int size(){
+        return this.size;
+    }
     //TODO c) create the boolean add(E e) method that adds at the end of the data structure an element
+    public boolean add(E e){
+        if(this.size/DEFAULT_CAPACITY>LOAD_FACTOR){
+            return false;
+        }
+        else{
+            size++;
+            this.elementData[size-1]=e;
+            return true;
+        }
+
+
+    }
+
     //TODO pay attention to the LOAD_FACTOR of the data structure
 
     //TODO d) create the boolean isEmpty() method that checks if the data structure have elements
+    public boolean isEmpty(){
+        if(this.size==0)
+            return false;
+        else
+            return true;
+    }
 
     //TODO e) create the boolean contains(Object o_O) method that checks if the data structure contains the object o_O
+    public boolean contains(Object o_O){
+        boolean ifContain = false;
+        for(Object index : this.elementData){
+            if(index == o_O){
+                ifContain = true;
+            }
+        }
+        return ifContain;
+    }
 
     //TODO f) create the int indexOf(Object o_O) method that returns the position in the data structure of the object o_O
     //TODO if exists, otherwise return -1
+    public int indexOf(Object o_O) {
+        int position = 0, count = 0;
+        for (Object index : this.elementData) {
+            if (index == o_O) {
+                position = count;
+            }
+            count++;
+        }
+        if (position!=0) {
+            return position;
+        } else {
+            return -1;
+        }
+    }
+
+
+
 
     //TODO g) create the int lastIndexOf(Object o_O) method that returns the last position in the data structure of the object o_O
     //TODO if exists, otherwise return -1
+    public int lastIndexOf(Object o_O) {
+        int position = 0, count = 0;
+        for (Object index : this.elementData) {
+            if (index == o_O) {
+                position = count;
+            }
+            count+=1;
+        }
+        if (position!=0) {
+            return position;
+        } else return -1;
+
+    }
+
 
     //TODO h) create the E get(int index) method that returns the object from the given index
     //TODO pay attention to the size property
 
+//    public Object get(int index) {
+//        if (index < this.size) {
+//            int count = 0;
+//            for (Object _index : this.elementData) {
+//                if (count == index) {
+//                    Object a = this.get(index);
+//                }
+//                count++;
+//            }
+//        }
+//        return a;
+//
+//    }
+
+
     //TODO i) create the E set(int index, E element) method that updates the value of the element from the given index
     //TODO pay attention to the size property
+//    public boolean set(int index, E element) {
+//        int counter = 0;
+//        for(Object _index : this.elementData){
+//            if(counter == index){
+//               this.elementData = ;
+//
+//            }
+//            counter+=1;
+//        }
+//        return true;
+//    }
 
     //TODO j) create the E remove(int index) method that removes the element from the given index
 
