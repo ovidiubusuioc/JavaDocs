@@ -1,13 +1,6 @@
 package exercise.exercise2;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-=======
-import java.util.*;
-import java.lang.Integer;
->>>>>>> 898d5b97be73ea05b7c18b00a282c3552f0bee74
 
 /**
  * Created by Radu.Hoaghe on 20.04.2015.
@@ -54,206 +47,15 @@ public class MyList<Integer> extends ArrayList<Integer> {
     // TODO Exercise #2 a) Override add() and addAll() methods so that the list should retain the number of
     // TODO Exercise #2 a) different elements (Hint: check out the methods signatures on the List documentation)
 
-    @Override
-    public boolean add(Integer integer) {
-<<<<<<< HEAD
-        if(!(super.subList(0, super.size())).contains(integer))
-            differentElements++;
-       // myList.add(integer);
-        return super.add(integer);
-=======
-        boolean result =  super.add(integer);
-        ListIterator<Integer> li = this.listIterator();
-        List<Integer> newList = new ArrayList<Integer>();
-        Integer value;
-
-        while (li.hasNext()) {
-            value = li.next();
-            if (!newList.contains(value)) {
-                newList.add(value);
-            }
-        }
-
-        if (!newList.contains(integer))
-            newList.add(integer);
-
-        this.differentElements = newList.size();
-        return result;
->>>>>>> 898d5b97be73ea05b7c18b00a282c3552f0bee74
-    }
-
-    @Override
-    public void add(int index, Integer element) {
-<<<<<<< HEAD
-        if(!(super.subList(0, super.size())).contains(element))
-            differentElements++;
-       // myList.add(index, element);
-        super.add(index, element);
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends Integer> c) {
-        for(Integer i : c)
-            if(!(super.subList(0, super.size())).contains(i))
-                differentElements++;
-       // myList.addAll(c);
-        return super.addAll(c);
-    }
-
-    @Override
-    public boolean addAll(int index, Collection<? extends Integer> c) {
-        for(Integer i : c)
-            if(!(super.subList(0, super.size())).contains(i))
-                differentElements++;
-       // myList.addAll(index, c);
-        return super.addAll(index, c);
-    }
-
     // TODO Exercise #2 b) Override the remove methods so that the number of different elements is updated when
-=======
-        super.add(index, element);
-        ListIterator<Integer> li = this.listIterator();
-        List<Integer> newList = new ArrayList<Integer>();
-        Integer value;
-
-        while (li.hasNext()) {
-            value = li.next();
-            if (!newList.contains(value)) {
-                newList.add(value);
-            }
-        }
-
-        if (!newList.contains(element))
-            newList.add(element);
-
-        this.differentElements = newList.size();
-
-
-    }
-
-    @Override
-    public boolean addAll(Collection c) {
-       boolean result = super.addAll(c);
-
-        ListIterator<Integer> li = this.listIterator();
-        List<Integer> newList = new ArrayList<Integer>();
-        Integer value;
-
-        while (li.hasNext()) {
-            value = li.next();
-            if (!newList.contains(value)) {
-                newList.add(value);
-            }
-        }
-
-        this.differentElements = newList.size();
-
-        return result;
-    }
-
-    @Override
-    public boolean addAll(int index, Collection c) {
-      boolean result =  super.addAll(index, c);
-
-        ListIterator<Integer> li = this.listIterator();
-        List<Integer> newList = new ArrayList<Integer>();
-        Integer value;
-
-        while (li.hasNext()) {
-            value = li.next();
-            if (!newList.contains(value)) {
-                newList.add(value);
-            }
-        }
-
-
-        this.differentElements = newList.size();
-        return result;
-    }
-
-    @Override
-    public Integer remove(int index) {
-        Integer result =  super.remove(index);
-        ListIterator<Integer> li = this.listIterator();
-        List<Integer> newList = new ArrayList<Integer>();
-        Integer value;
-
-        while (li.hasNext()) {
-            value = li.next();
-            if (!newList.contains(value)) {
-                newList.add(value);
-            }
-        }
-
-        this.differentElements = newList.size();
-        return result;
-    }
-
-
-
-    @Override
-    public boolean remove(Object o) {
-        boolean result = super.remove(o);
-
-        ListIterator<Integer> li = this.listIterator();
-        List<Integer> newList = new ArrayList<Integer>();
-        Integer value;
-
-        while (li.hasNext()) {
-            value = li.next();
-            if (!newList.contains(value)) {
-                newList.add(value);
-            }
-
-
-        }
-
-        this.differentElements = newList.size();
-        return result;
-
-    }
-// TODO Exercise #2 b) Override the remove methods so that the number of different elements is updated when
->>>>>>> 898d5b97be73ea05b7c18b00a282c3552f0bee74
     // TODO Exercise #2 b) an element is removed
     // TODO Exercise #2 b) hint: you need to update the number of different elements only when
     // TODO Exercise #2 b) the element that needs to be removed is the last element of its kind in the list
 
-    @Override
-    public Integer remove(int index) {
-
-
-        int nr = 0;
-        for (Integer elem : (super.subList(0, super.size()))) {
-            if (elem == (super.subList(0, super.size())).get(index))
-                nr++;
-        }
-        if (nr == 1)
-            differentElements--;
-        return super.remove(index);
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        int nr = 0;
-        for (Object elem : super.subList(0, super.size())) {
-            if (elem == o)
-                nr++;
-        }
-        if (nr == 1)
-            differentElements--;
-        return super.remove(o);
-    }
-
     // TODO Exercise #2 c) Override the clear method and reset the number of different elements
-
-    @Override
-    public void clear() {
-        super.clear();
-        differentElements = 0;
-    }
 
     // TODO Exercise #2 d) Return the number of different elements that exist into the list
     public int getDifferentElements() {
-        return differentElements;
+        return 0;
     }
 }
