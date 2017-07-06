@@ -1,25 +1,25 @@
-package exercise4;
+package exercise5;
 
-import java.util.*;
+import exercise4.MyHashMap;
+
+import java.util.Collection;
+import java.util.Set;
 
 /**
- * Exercise 3. Implement a HashMap from scratch. In order to pass all the tests
- * you need to implement all the methods defined below. The key-value pair will
- * be encapsulated in the MyHashMap.MyEntry object defined below.
+ * Create a HashMap that uses to store the buckets your implementation of MyImplementedList that you
+ * created in the Collections I workshop.
  *
- * The buckets list in which each MyEntry object will be stored is stored in "buckets" object.
- * The hash function that you will use in order to store a pair in a specific bucket will be
- * the one presented earlier: (hashcode value) modulo (bucket array size)
+ * Created by Radu.Hoaghe on 7/6/2017.
  */
-public class MyHashMap {
+public class MyHashMapWithMyImplementedList {
 
-    private ArrayList<LinkedList<MyEntry>> buckets;
+    // TODO uncomment the following line and add your MyImplementedList implementation to the project
+//    private MyImplementedList<LinkedList<MyEntry>> buckets;
 
     private final int BUCKET_ARRAY_SIZE = 16;
 
-    public MyHashMap() {
-
-        // TODO Initialize buckets list
+    public MyHashMapWithMyImplementedList() {
+        // TODO
     }
 
     public String get(String key) {
@@ -65,7 +65,7 @@ public class MyHashMap {
         // TODO Remove all the Entry objects from the bucket list
     }
 
-    public Set<MyEntry> entrySet() {
+    public Set<MyHashMap.MyEntry> entrySet() {
         // TODO Return a Set containing all the Entry objects
         return null;
     }

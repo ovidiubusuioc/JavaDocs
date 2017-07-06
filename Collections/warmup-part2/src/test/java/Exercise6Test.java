@@ -1,14 +1,30 @@
-import exercise4.MyHashMap;
+
+import exercise6.MyResizableHashMap;
 import junit.framework.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.Map;
 
-public class Exercise4Test {
+/**
+ * Created by Radu.Hoaghe on 7/6/2017.
+ */
+public class Exercise6Test {
+
+    private Map<String, String> countries;
+
+    @Before
+    public void setUp() throws Exception {
+        countries = new HashMap<String, String>();
+        for(String[] countryAndCapital : Exercise1Test.data){
+            countries.put(countryAndCapital[0], countryAndCapital[1]);
+        }
+    }
 
     @Test
     public void testPutMethod() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
         HashMap<String, String> expected = getExpected();
 
         Assert.assertEquals("Test size", myHashMap.size(), expected.size());
@@ -28,7 +44,7 @@ public class Exercise4Test {
 
     @Test
     public void testPutMethodWithNullKey() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
         HashMap<String, String> expected = getExpected();
         myHashMap.put(null, "Accra");
         expected.put(null, "Accra");
@@ -50,7 +66,7 @@ public class Exercise4Test {
 
     @Test
     public void testPutMethodWithDuplicates() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
         HashMap<String, String> expected = getExpected();
         myHashMap.put("ALGERIA","Algiers");
         expected.put("ALGERIA","Algiers");
@@ -66,7 +82,7 @@ public class Exercise4Test {
 
     @Test
     public void testRemoveMethod() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
         Assert.assertTrue("Test remove method", myHashMap.remove("ALGERIA") != null);
 
         Assert.assertEquals("Test size", myHashMap.size(), 3);
@@ -76,7 +92,7 @@ public class Exercise4Test {
 
     @Test
     public void testRemoveMethodWithNonexistentObject() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
         Assert.assertTrue("Test remove with nonexistent object", myHashMap.remove("KENYA") == null);
 
         Assert.assertEquals("Test size", myHashMap.size(), 4);
@@ -84,7 +100,7 @@ public class Exercise4Test {
 
     @Test
     public void testGetMethod() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
         HashMap<String, String> expected = getExpected();
 
         Assert.assertTrue("Test get method",
@@ -93,7 +109,7 @@ public class Exercise4Test {
 
     @Test
     public void testGetMethodWithNonexistentObject() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
 
         Assert.assertTrue("Test get method with nonexistent object",
                 myHashMap.get("NIGER") == null);
@@ -101,7 +117,7 @@ public class Exercise4Test {
 
     @Test
     public void testGetMethodWithNull() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
 
         Assert.assertTrue("Test get method with null",
                 myHashMap.get(null) == null);
@@ -109,7 +125,7 @@ public class Exercise4Test {
 
     @Test
     public void testContainsKeyValueMethod() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
 
         Assert.assertTrue("Test containsKey method returns true",
                 myHashMap.containsKey("ALGERIA"));
@@ -126,7 +142,7 @@ public class Exercise4Test {
 
     @Test
     public void testClearAndIsEmptyMethod() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
         myHashMap.clear();
 
         Assert.assertTrue("Test clear method", myHashMap.size() == 0);
@@ -135,7 +151,7 @@ public class Exercise4Test {
 
     @Test
     public void testEntrySetMethod() throws Exception {
-        MyHashMap myHashMap = getMyHashMap();
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
         HashMap<String, String> expected = getExpected();
 
         Assert.assertEquals("Test if expected contains all the entries from MyHashMap", true,
@@ -145,12 +161,22 @@ public class Exercise4Test {
                 myHashMap.entrySet().containsAll(expected.entrySet()));
     }
 
-    private MyHashMap getMyHashMap(){
-        MyHashMap myHashMap = new MyHashMap();
+    @Test
+    public void testHashMapResizing() throws Exception {
+        MyResizableHashMap<String, String> myHashMap = getMyHashMap();
+        for(String[] countryAndCapital : Exercise1Test.data){
+            myHashMap.put(countryAndCapital[0], countryAndCapital[1]);
+        }
+
+        Assert.assertEquals("Test if map resizing succeeded", countries.size() == myHashMap.size());
+    }
+
+    private MyResizableHashMap<String, String> getMyHashMap(){
+        MyResizableHashMap<String, String> myHashMap = new MyResizableHashMap<String, String>();
         myHashMap.put("ALGERIA","Algiers");
         myHashMap.put("BENIN","Porto-Novo");
         myHashMap.put("BURKINA FASO","Ouagadougou");
-        myHashMap.put("CHAD","N�djamena");
+        myHashMap.put("CHAD","Ndjamena");
         return myHashMap;
     }
 
@@ -159,7 +185,7 @@ public class Exercise4Test {
         expected.put("ALGERIA","Algiers");
         expected.put("BENIN","Porto-Novo");
         expected.put("BURKINA FASO","Ouagadougou");
-        expected.put("CHAD","N�djamena");
+        expected.put("CHAD","Ndjamena");
         return expected;
     }
 }
