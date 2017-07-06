@@ -168,7 +168,10 @@ public class Exercise6Test {
             myHashMap.put(countryAndCapital[0], countryAndCapital[1]);
         }
 
-        Assert.assertEquals("Test if map resizing succeeded", countries.size() == myHashMap.size());
+        Assert.assertEquals("Test if map resizing succeeded (size)", countries.size(), myHashMap.size());
+        Assert.assertTrue("Test if map resizing succeeded (containsAll)",
+                countries.entrySet().containsAll(myHashMap.entrySet()) &&
+                myHashMap.entrySet().containsAll(countries.entrySet()));
     }
 
     private MyResizableHashMap<String, String> getMyHashMap(){
