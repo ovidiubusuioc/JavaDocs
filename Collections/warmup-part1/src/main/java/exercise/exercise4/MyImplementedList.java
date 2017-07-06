@@ -174,7 +174,7 @@ public class MyImplementedList<E> {
     //TODO j) create the E remove(int index) method that removes the element from the given index
 
     //TODO k) extend the current default capacity, if the number of elements in the data structure is > 75% of it
-    //TODO you should name it: void extendCapacity(int capacity) - HINT use capacity, DEFAULT_CAPACITY, LOAD_FACTOR and INCREASE_SIZE_FACTOR
+    //TODO you should name it: void extendCapacity() - HINT use capacity, DEFAULT_CAPACITY, LOAD_FACTOR and INCREASE_SIZE_FACTOR
 
     //TODO l) implement the iterator() method in order to use the foreach statement over your data structure - HINT Iterable interface
     //TODO and implement a custom iterator for your custom data structure - methods boolean hasNext(), Object next() and void remove()
