@@ -3,13 +3,16 @@ package com.java_8_training.problems.collectors;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import static com.java_8_training.problems.collectors.Dish.CaloricLevel;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+import static com.java_8_training.problems.collectors.Dish.menu;
+import static java.util.stream.Collectors.*;
 import static junit.framework.Assert.assertEquals;
 
 @Ignore
@@ -23,6 +26,7 @@ public class PartitioningAndGroupingTest {
         Map<Boolean, List<Dish>> partitionedDishes = new HashMap<>();
 
         //TODO #C1
+        
 
         assertEquals(2, partitionedDishes.get(false).size());
         assertEquals(7, partitionedDishes.get(true).size());
