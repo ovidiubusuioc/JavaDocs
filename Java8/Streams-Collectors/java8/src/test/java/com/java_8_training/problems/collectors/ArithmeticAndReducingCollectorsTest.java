@@ -18,15 +18,16 @@ public class ArithmeticAndReducingCollectorsTest {
     @Test
     public void leastCaloricDishMEAT() {
         //TODO #C5
-        Dish leastCaloricMEAT = new Dish();
-
+        Dish leastCaloricMEAT = Dish.menu.stream().filter(d -> d.getType() == Dish.Type.MEAT).min(comparing(Dish::))
+getCalories)).get();
         assertEquals("chicken", leastCaloricMEAT.getName());
     }
 
     @Test
     public void statisticsForVegetarianDishes() {
-        //TODO #C5
-        IntSummaryStatistics vegetarianStats = new IntSummaryStatistics();
+        //TODO #C6
+        IntSummaryStatistics vegetarianStats = Dish.menu.stream().filter(Dish::isVegetarian).collect(summarizingInt(Dish::getCalories));
+
 
         assertEquals(4, vegetarianStats.getCount());
         assertEquals(1550, vegetarianStats.getSum());

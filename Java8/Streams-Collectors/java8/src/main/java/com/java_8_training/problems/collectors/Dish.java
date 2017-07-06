@@ -1,7 +1,7 @@
 package com.java_8_training.problems.collectors;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.lang.*;
 
 public class Dish {
 

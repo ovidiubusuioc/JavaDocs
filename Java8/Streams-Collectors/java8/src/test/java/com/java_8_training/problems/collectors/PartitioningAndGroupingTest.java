@@ -3,13 +3,10 @@ package com.java_8_training.problems.collectors;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.lang.*;
 
 import static com.java_8_training.problems.collectors.Dish.CaloricLevel;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
 import static junit.framework.Assert.assertEquals;
 
 @Ignore
@@ -24,6 +21,8 @@ public class PartitioningAndGroupingTest {
 
         //TODO #C1
 
+       // partitionedDishes = Dish.menu.stream().collect(Collectors.partitioningBy(d -> d.getCalories() >380));
+
         assertEquals(2, partitionedDishes.get(false).size());
         assertEquals(7, partitionedDishes.get(true).size());
     }
@@ -34,7 +33,7 @@ public class PartitioningAndGroupingTest {
         Map<CaloricLevel, List<Dish>> groupedDishes = new HashMap<>();
 
         //TODO #C2
-//
+        groupedDishes = Dish.menu.stream().collect(Collectors.groupingBy(d -> (d.getCalories()<=100) ? CaloriesLevel.DIET : (d.getCalories() > 400) && (d.getCalories() <= 700) ? CaloriesLevel.NORMAL : CaloriesLevel.FAT));
         assertEquals(4, groupedDishes.get(CaloricLevel.DIET).size());
         assertEquals(4, groupedDishes.get(CaloricLevel.NORMAL).size());
         assertEquals(1, groupedDishes.get(CaloricLevel.FAT).size());
@@ -42,7 +41,7 @@ public class PartitioningAndGroupingTest {
 
     @Test
     public void groupCounting(){
-        Map<Dish.Type, Long> groupedDishes = new HashMap<>();
+        Map<Dish.Type, Long> groupedDishes = Dish.menu.stream().filter(dish->dish.getCalories()>140).collect(groupingBy(Dish::getType, counting));
         //TODO #C7
 
         assertEquals(3, groupedDishes.get(Dish.Type.MEAT).intValue());
