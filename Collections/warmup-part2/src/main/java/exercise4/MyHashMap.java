@@ -20,15 +20,16 @@ public class MyHashMap {
     public MyHashMap() {
 
         // TODO Initialize buckets list
+
+
     }
 
     public String get(String key) {
-        // TODO
-        return null;
+        return key;
     }
 
     public void put(String key, String value) {
-        // TODO
+
     }
 
     public Set<String> keySet() {
@@ -38,8 +39,8 @@ public class MyHashMap {
 
     public Collection<String> values() {
         // TODO
-        return null;
-    }
+return null;
+            }
 
     public String remove(String key) {
         // TODO Returns the value associated with the key removed from the map or null if the key wasn't found

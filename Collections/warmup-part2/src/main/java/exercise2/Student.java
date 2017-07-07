@@ -1,5 +1,7 @@
 package exercise2;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by Radu.Hoaghe on 20.04.2015.
  */
@@ -8,6 +10,8 @@ public class Student {
     private final String firstName;
     private final String lastName;
     private final Double averageGrade;
+    private Student s;
+    private Object o;
 
     public Student(Integer id, String firstName, String lastName, Double averageGrade) {
         this.id = id;
@@ -35,7 +39,7 @@ public class Student {
     // TODO Exercise 2 a) Override the toString() method
     @Override
     public String toString() {
-        return "";
+        return this.id+" "+this.firstName+" "+this.lastName+" "+this.averageGrade;
     }
 
     // TODO Exercise 2 c) Override the equals() method
@@ -43,19 +47,26 @@ public class Student {
     public boolean equals(Object o) {
         // TODO Exercise 2 c1) Check if the current instance is the same instance as the one from Object o
 
+
         // TODO Exercise 2 c2) Check if Object o is null
+        if(o == null)
+            return true;
 
         // TODO Exercise 2 c3) Check if Object o class type is the same as the current instance's type
-
+        if(o.getClass()==this.getClass())
+            return true;
         // TODO Exercise 2 c4) Now you know for sure that the Object o is of type Student so you
         // TODO need to cast it to a Student type object
 
+
         // TODO Exercise 2 c5) Check if all the fields from Student class are equal to the ones from
+        if(this.equals(o))
+            return true;
         // TODO Exercise 2 c5) Object o (id, lastName, firstName, averageGrade)
 
         return false;
 
-        // TODO Exercise 2 d) After you finished implementing equals method go to TODO Exercise 2 e) from Exercise2 class
+        //  Exercise 2 d) After you finished implementing equals method go to TODO Exercise 2 e) from Exercise2 class
     }
 
     // TODO Exercise 2 g) Override the hashCode() method
@@ -63,7 +74,7 @@ public class Student {
     // TODO Exercise 2 g) the Student class
     @Override
     public int hashCode() {
-        return 0;
+        return this.id;
         // TODO Exercise 2 h) After you finished implementing hashCode go to TODO Exercise 2 i) from Exercise2 class
     }
 
