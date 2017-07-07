@@ -26,7 +26,7 @@ public class PartitioningAndGroupingTest {
         Map<Boolean, List<Dish>> partitionedDishes = new HashMap<>();
 
         //TODO #C1
-        
+        partitionedDishes = Dish.menu.stream().collect(Collectors.partitioningBy(d -> d.getCalories() >380));
 
         assertEquals(2, partitionedDishes.get(false).size());
         assertEquals(7, partitionedDishes.get(true).size());
@@ -38,6 +38,7 @@ public class PartitioningAndGroupingTest {
         Map<CaloricLevel, List<Dish>> groupedDishes = new HashMap<>();
 
         //TODO #C2
+        groupedDishes = Dish.menu.stream().collect(Collectors.groupingBy(d -> (d.getCalories()<=100) ? CaloricLevel.DIET : (d.getCalories() > 400) && (d.getCalories() <= 700) ? CaloricLevel.NORMAL : CaloricLevel.FAT));
 //
         assertEquals(4, groupedDishes.get(CaloricLevel.DIET).size());
         assertEquals(4, groupedDishes.get(CaloricLevel.NORMAL).size());
@@ -46,7 +47,7 @@ public class PartitioningAndGroupingTest {
 
     @Test
     public void groupCounting(){
-        Map<Dish.Type, Long> groupedDishes = new HashMap<>();
+        Map<Dish.Type, Long> groupedDishes = Dish.menu.stream().filter(dish->dish.getCalories()>140).collect(groupingBy(Dish::getType, counting()));
         //TODO #C7
 
         assertEquals(3, groupedDishes.get(Dish.Type.MEAT).intValue());
