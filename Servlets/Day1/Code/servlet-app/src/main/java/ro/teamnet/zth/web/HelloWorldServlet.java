@@ -14,7 +14,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.Response;
 import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Hello World Servlet expose get method to say hello to input user
@@ -35,10 +40,13 @@ public class HelloWorldServlet extends HttpServlet {
         // Set the response type
         response.setContentType("text/html");
 
-        // TODO Obtain the username from the request instance
+        // Obtain the username from the request instance
+        user = request.getParameter("user");
 
 
         // TODO Write the response content to the PrintWriter instance of the response instance
+        response.getWriter().write("Hello, " + user);
+
         // TIP: use write() method
         // TIP: you can also use html tags to markup your text
 
