@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 
@@ -37,7 +35,6 @@ public class ExportFileServlet extends HttpServlet {
             String object = enumeration.nextElement();
             paramsMap.put(object, request.getParameter(object));
         }
-        Collections.
         // TODO 1: Iterate through Enumeration of parameter names from the request object and put inside paramsMap each parameter send from request
         // TIP: Use lambda expression
         // TIP: Each entry of the map should be <parameterName, parameterValue>

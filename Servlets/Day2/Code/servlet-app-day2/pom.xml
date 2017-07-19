@@ -59,7 +59,7 @@
                 <version>2.2</version>
                 <configuration>
                     <server>local_tomcat</server>
-                    <!-- TODO Uncomment next line to deploy on Docker tomcat -->
+                    <!-- Uncomment next line to deploy on Docker tomcat -->
                     <!--<url>http://docker.local:49100/manager/text</url>-->
                     <url>http://localhost:8080/manager/html</url>
                 </configuration>
